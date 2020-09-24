@@ -20,6 +20,13 @@ class LoginController extends Controller
     */
 
     use AuthenticatesUsers;
+    
+
+    //オーバーライド
+    public function username()
+    {
+        return 'name'; //ユーザー名
+    }
 
     /**
      * Where to redirect users after login.
