@@ -1,7 +1,11 @@
 <header class="mb-4">
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-sm navbar-dark" style="background-color:#ff69b4">
         {{-- トップページへのリンク --}}
-        <a class="navbar-brand" href="/">Microposts</a>
+        <a class="navbar-brand col-sm-2" href="/">Fall Logs</a>
+        {!! link_to_route('shows.create', 'Show作成', [], ['class' => 'navbar-brand col-sm-2']) !!}
+        {!! link_to_route('shows.index', 'Show一覧', [], ['class' => 'navbar-brand col-sm-2']) !!}
+        {!! link_to_route('users.stats', 'スタッツ', [], ['class' => 'navbar-brand col-cm-2']) !!}
+
 
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#nav-bar">
             <span class="navbar-toggler-icon"></span>
@@ -11,8 +15,6 @@
             <ul class="navbar-nav mr-auto"></ul>
             <ul class="navbar-nav">
                 @if (Auth::check())
-                    {{-- ユーザ一覧ページへのリンク --}}
-                    <li class="nav-item"><a href="#" class="nav-link">Users</a></li>
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }}</a>
                         <ul class="dropdown-menu dropdown-menu-right">
