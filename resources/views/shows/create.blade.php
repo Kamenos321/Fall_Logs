@@ -6,6 +6,10 @@
         <div class='col-10'>
         {!! Form::model($show,['route' => 'shows.store']) !!}
             <div class="form-group row">
+                {!! Form::label('date', 'date', ['class' => 'col-sm-2']) !!}
+                {!! Form::date('date', date('Y-m-d'), ['class' => 'form-control col-sm-8']) !!}
+            </div>
+            <div class="form-group row">
                 {!! Form::label('stage1', '1st', ['class' => 'col-sm-2']) !!}
                 {!! Form::text('stage1', old('stage1'), ['class' => 'form-control col-sm-8']) !!}
             </div>
@@ -41,5 +45,5 @@
         {!! Form::close() !!}
         </div>
     </div>
-    {!! Form::date('result', '', ['class' => 'form-control col-sm-8']) !!}
+
 @endsection

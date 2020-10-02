@@ -28,4 +28,6 @@ Route::group(['middleware' => ['auth']], function () {
     // 中略
     Route::resource('shows', 'ShowsController');
     Route::get('stats', 'UsersController@stats')->name('users.stats');
+    Route::get('period_search', 'ShowsController@period_search')->name('shows.period_search');
+    Route::get('period_stats', 'UsersController@period_stats')->name('users.period_stats');
 });

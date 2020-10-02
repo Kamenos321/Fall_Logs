@@ -27,23 +27,31 @@ class UsersController extends Controller
         return view('users.stats', $data);
     }
 
-    public function played_games_count($game)
+    public function period_stats(Request $request)
     {
-        $user = \Auth::user();
-        
-        $played_games_count = $user->shows()->where('stage1',$game)
-                                ->orWhere('stage2',$game)
-                                ->orWhere('stage3',$game)
-                                ->orWhere('stage4',$game)
-                                ->orWhere('stage5',$game)
-                                ->orWhere('stage6',$game)
-                                ->orWhere('stage7',$game)                             
-                                ->count();
-                            
-        return view('users.stats',[
-            'user' => $user,
-            'played_games_count' => $played_games_count
+       // バリデーション
+        $request->validate(
+            ['date_from' => 'required',
+             'date_to' => 'required'
             ]);
+        
+        $data = [];
+        if (\Auth::check()) { // 認証済みの場合
+            // 認証済みユーザを取得
+            $user = \Auth::user();
+
+            $shows = $user->shows()->where('date', '>=', $request->date_from)->where('date', '<=', $request->date_to)->orderBy('created_at', 'asc')->paginate(100);
+            
+            $data = [
+                'user' => $user,
+                'shows' => $shows,
+            ];
+
+        }
+        
+        return view('users.stats', $data);
+
+
     }
 
 }

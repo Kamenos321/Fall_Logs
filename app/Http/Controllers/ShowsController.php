@@ -15,7 +15,7 @@ class ShowsController extends Controller
             // 認証済みユーザを取得
             $user = \Auth::user();
            // ユーザのshowの一覧を作成日時の昇順で取得
-            $shows = $user->shows()->orderBy('created_at', 'asc')->paginate(100);
+            $shows = $user->shows()->orderBy('created_at', 'desc')->paginate(100);
             
             $data = [
                 'user' => $user,
@@ -23,7 +23,7 @@ class ShowsController extends Controller
             ];
         }
         
-        // Welcomeビューでそれらを表示
+        // indexビューでそれらを表示
         return view('shows.index', $data);
     }
     
@@ -40,6 +40,7 @@ class ShowsController extends Controller
     {
         // バリデーション
         $request->validate([
+            'date' => 'required',
             'stage1' => 'required|max:20',
             'stage2' => 'max:20',
             'stage3' => 'max:20',
@@ -52,6 +53,7 @@ class ShowsController extends Controller
             
         // 認証済みユーザ(閲覧者)の投稿として作成(リクエストされた値をもとに作成)
         $request->user()->shows()->create([
+            'date' => $request->date,
             'stage1' => $request->stage1,
             'stage2' => $request->stage2,
             'stage3' => $request->stage3,
@@ -78,6 +80,7 @@ class ShowsController extends Controller
     {
         // バリデーション
         $request->validate([
+            'date' => 'required',
             'stage1' => 'required|max:20',
             'stage2' => 'max:20',
             'stage3' => 'max:20',
@@ -91,6 +94,7 @@ class ShowsController extends Controller
         $show = Show::findOrFail($id);
         
         if(\Auth::id() === $show->user_id) {
+            $show->date = $request->date;
             $show->stage1 = $request->stage1;
             $show->stage2 = $request->stage2;
             $show->stage3 = $request->stage3;
@@ -133,4 +137,27 @@ class ShowsController extends Controller
         return view('shows.stats', $data);
     }
     
+    public function period_search(Request $request)
+    {
+       // バリデーション
+        $request->validate(
+            ['date_from' => 'required',
+             'date_to' => 'required'
+            ]);
+
+        $data = [];
+        if (\Auth::check()) { // 認証済みの場合
+
+            $user = \Auth::user();
+
+            $shows = $user->shows()->where('date', '>=', $request->date_from)->where('date', '<=', $request->date_to)->orderBy('date', 'desc')->paginate(100);
+        
+            $data = [
+                'user' => $user,
+                'shows' => $shows,
+            ];
+        }
+        return view('shows.index',$data);
+    }
+
 }

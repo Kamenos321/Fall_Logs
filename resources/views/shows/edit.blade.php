@@ -6,6 +6,10 @@
         <div class="col-10">
             {!! Form::model($show, ['route' => ['shows.update', $show->id], 'method' => 'put']) !!}
                 <div class="form-group row">
+                    {!! Form::label('date', 'date', ['class' => 'col-sm-2']) !!}
+                    {!! Form::date('date', old('date'), ['class' => 'form-control col-sm-8']) !!}
+                </div>
+                <div class="form-group row">
                     {!! Form::label('stage1', '1st', ['class' => 'col-sm-2']) !!}
                     {!! Form::text('stage1', old('stage1'), ['class' => 'form-control col-sm-8']) !!}
                 </div>

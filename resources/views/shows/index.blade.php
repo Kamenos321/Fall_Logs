@@ -2,10 +2,12 @@
 
 @section('content')
 
+@include('shows.period')
+
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th scope="col">at</th>
+      <th scope="col">date</th>
       <th scope="col">1st</th>
       <th scope="col">2nd</th>
       <th scope="col">3rd</th>
@@ -18,7 +20,7 @@
   <tbody>
     <tr>
     @foreach($shows as $show)
-        <td scope="row">{{ $show->created_at }}</th>
+        <td scope="row">{{ $show->date }}</th>
         <td scope="row">{{ $show->stage1 }}</th>
         <td scope="row">{{ $show->stage2 }}</td>
         <td scope="row">{{ $show->stage3 }}</td>

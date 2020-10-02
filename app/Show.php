@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Show extends Model
 {
-    protected $fillable = ['stage1','stage2','stage3','stage4','stage5','stage6','stage7','result'];
+    protected $fillable = ['date','stage1','stage2','stage3','stage4','stage5','stage6','stage7','result'];
 
     /**
      * このshowをプレイしたユーザ。（ Userモデルとの関係を定義）
@@ -15,16 +15,6 @@ class Show extends Model
     {
         return $this->belongsTo(User::class);
     }
-    
-    // public function results()
-    // {
-    //     return $this->hasMany(Result::class);
-    // }
-    
-    // public function loadRelationshipCounts()
-    // {
-    //     $this->loadCount('results');
-    // }
     
     public function failed_game()
     {

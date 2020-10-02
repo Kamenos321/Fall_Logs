@@ -39,39 +39,29 @@ class User extends Authenticatable
         return $this->hasMany(Show::class);
     }
     
-    /**
-     * このユーザのプレイ結果。（ Resultモデルとの関係を定義）
-     */
-    public function results()
-    {
-        return $this->hasMany(Result::class);
-    }
-    
     public function loadRelationshipCounts()
     {
         $this->loadCount('shows');
     }
     
-    public function played_games_count($game)
+    public function played_games_count($game,$shows)
     {
         $user = \Auth::user();
         
-        $played_games_count = $user->shows()->where('stage1',$game)->count() +
-                              $user->shows()->where('stage2',$game)->count() +
-                              $user->shows()->where('stage3',$game)->count() +
-                              $user->shows()->where('stage4',$game)->count() +
-                              $user->shows()->where('stage5',$game)->count() +
-                              $user->shows()->where('stage6',$game)->count() +
-                              $user->shows()->where('stage7',$game)->count();
+        $played_games_count = $shows->where('stage1',$game)->count() +
+                              $shows->where('stage2',$game)->count() +
+                              $shows->where('stage3',$game)->count() +
+                              $shows->where('stage4',$game)->count() +
+                              $shows->where('stage5',$game)->count() +
+                              $shows->where('stage6',$game)->count() +
+                              $shows->where('stage7',$game)->count();
                             
         return $played_games_count;
     }
-    
-    public function failed_games_count($game)
+
+    public function failed_games_count($game,$shows)
     {
         $user = \Auth::user();
-
-        $shows = $user->shows()->get();
 
         $failed_games = array();
         
@@ -81,38 +71,34 @@ class User extends Authenticatable
                 $failed_games[] = $show->failed_game();
             }
         }
-        return count(array_keys($failed_games, $game));
+        return count(array_keys($failed_games,$game));
     }
     
-    public function cleared_games_count($game)
+    public function cleared_games_count($game,$shows)
     {
-        return $this->played_games_count($game) - $this->failed_games_count($game);
+        return $this->played_games_count($game,$shows) - $this->failed_games_count($game,$shows);
     }
     
-    public function cleared_games_era($game)
+    public function cleared_games_era($game,$shows)
     {
-        if ($this->played_games_count($game) !== 0)
+        if ($this->played_games_count($game,$shows) != 0)
         {
-            return round($this->cleared_games_count($game) / $this->played_games_count($game) * 100, 2);
-        } else {
-            return 0;
+            return round($this->cleared_games_count($game,$shows) / $this->played_games_count($game,$shows) * 100, 2).'%';
         }
     }
     
-    public function played_rounds_count($round)
+    public function played_rounds_count($round,$shows)
     {
         $user = \Auth::user();
         
-        $played_rounds_count = $user->shows()->where('stage' . $round , '!=' ,null)->count();
+        $played_rounds_count = $shows->where('stage' . $round , '!=' ,null)->count();
 
         return $played_rounds_count;
     }
     
-    public function failed_rounds_count($round)
+    public function failed_rounds_count($round,$shows)
     {
         $user = \Auth::user();
-
-        $shows = $user->shows()->get();
 
         $failed_rounds = array();
         
@@ -122,29 +108,26 @@ class User extends Authenticatable
                 $failed_rounds[] = $show->failed_round();
             }
         }
-        return count(array_keys($failed_rounds, $round));
+        return count(array_keys($failed_rounds,$round));
     }
     
-    public function cleared_rounds_count($round)
+    public function cleared_rounds_count($round,$shows)
     {
-        return $this->played_rounds_count($round) - $this->failed_rounds_count($round);
+        return $this->played_rounds_count($round,$shows) - $this->failed_rounds_count($round,$shows);
     }
     
-    public function cleared_rounds_era($round)
+    public function cleared_rounds_era($round,$shows)
     {
-        if ($this->played_rounds_count($round) !== 0)
+        if ($this->played_rounds_count($round,$shows) !== 0)
         {
-            return round($this->cleared_rounds_count($round) / $this->played_rounds_count($round) * 100, 2);
-        } else {
-            return 0;
+            return round($this->cleared_rounds_count($round,$shows) / $this->played_rounds_count($round,$shows) * 100, 2).'%';
         }
     }
     
-    public function wins_count()
+    public function wins_count($shows)
     {
         $user = \Auth::user();
-        $shows = $user->shows()->get();
-        return $user->shows()->where('result', 'win')->count();
+        return $shows->where('result', 'win')->count();
     }
     
 }
