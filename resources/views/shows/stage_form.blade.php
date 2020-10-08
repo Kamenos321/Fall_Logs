@@ -3,8 +3,9 @@
 <?php $games_team = array('エッグ・スクランブル','ためこみ合戦','チームしっぽオニ','バッドラック','フープ・ループ・ゴール','フォールボール','ロックンロール'); ?>
 <?php $games_final = array('クラウンマウンテン','ジャンプ・ショーダウン','止まるなキケン','ロイヤルファンブル'); ?>
 
+<!--ステージ1入力フォーム-->
 <div class='d-flex'>
-@if($stage1 === null)
+@if($stage1 == null)
 1stステージ
 <div>
 @foreach($games_race as $game_race)
@@ -41,8 +42,9 @@
 @endif
 </div>
 
+<!--ステージ2入力フォーム-->
 <div class='d-flex'>
-@if($stage1 !== null && $stage2 === null)
+@if($stage1 != null && $stage2 == null)
 2ndステージ
 <div>
 @foreach($games_race as $game_race)
@@ -79,12 +81,17 @@
     {!! Form::submit($game_final,['class'=>'btn btn-warning']) !!}
 {!! Form::close() !!}
 @endforeach
+{!! Form::open(['route' => 'complete_1st' ,'method' => 'post']) !!}
+    {!! Form::hidden('stage1', null) !!}
+    {!! Form::submit('ステージ1入力へ戻る', ['class' => 'btn btn-info']) !!}
+{!! Form::close() !!}
 </div>
 @endif
 </div>
 
+<!--ステージ3入力フォーム-->
 <div class='d-flex'>
-@if($stage2 !== null && $stage3 === null)
+@if($stage2 != null && $stage3 == null)
 3rdステージ
 <div>
 @foreach($games_race as $game_race)
@@ -126,12 +133,18 @@
     {!! Form::submit($game_final,['class'=>'btn btn-warning']) !!}
 {!! Form::close() !!}
 @endforeach
+{!! Form::open(['route' => 'complete_2nd' ,'method' => 'post']) !!}
+    {!! Form::hidden('stage1', $stage1) !!}
+    {!! Form::hidden('stage2', null) !!}
+    {!! Form::submit('ステージ2入力へ戻る', ['class' => 'btn btn-info']) !!}
+{!! Form::close() !!}
 </div>
 @endif
 </div>
 
+<!--ステージ4入力フォーム-->
 <div class='d-flex'>
-@if($stage3 !== null && $stage4 === null)
+@if($stage3 != null && $stage4 == null)
 4thステージ
 <div>
 @foreach($games_race as $game_race)
@@ -176,12 +189,19 @@
     {!! Form::submit($game_final,['class'=>'btn btn-warning']) !!}
 {!! Form::close() !!}
 @endforeach
+{!! Form::open(['route' => 'complete_3rd' ,'method' => 'post']) !!}
+    {!! Form::hidden('stage1', $stage1) !!}
+    {!! Form::hidden('stage2', $stage2) !!}
+    {!! Form::hidden('stage3', null) !!}
+    {!! Form::submit('ステージ3入力へ戻る', ['class' => 'btn btn-info']) !!}
+{!! Form::close() !!}
 </div>
 @endif
 </div>
 
+<!--ステージ5入力フォーム-->
 <div class='d-flex'>
-@if($stage4 !== null && $stage5 === null)
+@if($stage4 != null && $stage5 == null)
 5thステージ
 <div>
 @foreach($games_race as $game_race)
@@ -230,12 +250,20 @@
     {!! Form::submit($game_final,['class'=>'btn btn-warning']) !!}
 {!! Form::close() !!}
 @endforeach
+{!! Form::open(['route' => 'complete_4th' ,'method' => 'post']) !!}
+    {!! Form::hidden('stage1', $stage1) !!}
+    {!! Form::hidden('stage2', $stage2) !!}
+    {!! Form::hidden('stage3', $stage3) !!}
+    {!! Form::hidden('stage4', null) !!}
+    {!! Form::submit('ステージ4入力へ戻る', ['class' => 'btn btn-info']) !!}
+{!! Form::close() !!}
 </div>
 @endif
 </div>
 
+<!--ステージ6入力フォーム-->
 <div class='d-flex'>
-@if($stage5 !== null && $stage6 === null)
+@if($stage5 != null && $stage6 == null)
 6thステージ
 <div>
 @foreach($games_race as $game_race)
@@ -288,12 +316,21 @@
     {!! Form::submit($game_final,['class'=>'btn btn-warning']) !!}
 {!! Form::close() !!}
 @endforeach
+{!! Form::open(['route' => 'complete_5th' ,'method' => 'post']) !!}
+    {!! Form::hidden('stage1', $stage1) !!}
+    {!! Form::hidden('stage2', $stage2) !!}
+    {!! Form::hidden('stage3', $stage3) !!}
+    {!! Form::hidden('stage4', $stage4) !!}
+    {!! Form::hidden('stage5', null) !!}
+   {!! Form::submit('ステージ5入力へ戻る', ['class' => 'btn btn-info']) !!}
+{!! Form::close() !!}
 </div>
 @endif
 </div>
 
+<!--ステージ7入力フォーム-->
 <div class='d-flex'>
-@if($stage6 !== null && $stage7 === null)
+@if($stage6 != null && $stage7 == null)
 7thステージ
 <div>
 @foreach($games_race as $game_race)
@@ -350,6 +387,29 @@
     {!! Form::submit($game_final,['class'=>'btn btn-warning']) !!}
 {!! Form::close() !!}
 @endforeach
+{!! Form::open(['route' => 'complete_6th' ,'method' => 'post']) !!}
+    {!! Form::hidden('stage1', $stage1) !!}
+    {!! Form::hidden('stage2', $stage2) !!}
+    {!! Form::hidden('stage3', $stage3) !!}
+    {!! Form::hidden('stage4', $stage4) !!}
+    {!! Form::hidden('stage5', $stage5) !!}
+    {!! Form::hidden('stage6', null) !!}
+    {!! Form::submit('ステージ6入力へ戻る', ['class' => 'btn btn-info']) !!}
+{!! Form::close() !!}
 </div>
 @endif
 </div>
+
+<!--ステージ7修正フォーム-->
+@if($stage7 != null)
+{!! Form::open(['route' => 'complete_7th' ,'method' => 'post']) !!}
+    {!! Form::hidden('stage1', $stage1) !!}
+    {!! Form::hidden('stage2', $stage2) !!}
+    {!! Form::hidden('stage3', $stage3) !!}
+    {!! Form::hidden('stage4', $stage4) !!}
+    {!! Form::hidden('stage5', $stage5) !!}
+    {!! Form::hidden('stage6', $stage6) !!}
+    {!! Form::hidden('stage7', null) !!}
+    {!! Form::submit('ステージ7入力へ戻る', ['class' => 'btn btn-info']) !!}
+{!! Form::close() !!}
+@endif

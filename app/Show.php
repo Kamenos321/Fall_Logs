@@ -18,7 +18,7 @@ class Show extends Model
     
     public function failed_game()
     {
-        if($this->result == 'win') {
+        if($this->result == 1) {
             return null;
         }
         elseif($this->stage7 !== null) {
@@ -46,7 +46,7 @@ class Show extends Model
     
     public function failed_round()
     {
-        if($this->result == 'win') {
+        if($this->result == 1) {
             return null;
         }
         elseif($this->stage7 !== null) {

@@ -39,7 +39,7 @@
                 </div>
                 <div class="form-group row">
                     {!! Form::label('result', '結果', ['class' => 'col-sm-2']) !!}
-                    {!! Form::text('result', old('result'), ['class' => 'form-control col-sm-8']) !!}
+                    {!! Form::select('result',['lose', 'win']) !!}
                 </div>
                 {!! Form::submit('更新', ['class' => 'btn btn-primary px-5']) !!}    
             {!! Form::close() !!}

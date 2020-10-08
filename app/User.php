@@ -127,7 +127,7 @@ class User extends Authenticatable
     public function wins_count($shows)
     {
         $user = \Auth::user();
-        return $shows->where('result', 'win')->count();
+        return $shows->where('result', 1)->count();
     }
     
 }
