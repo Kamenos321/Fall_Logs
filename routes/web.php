@@ -30,4 +30,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('stats', 'UsersController@stats')->name('users.stats');
     Route::get('period_search', 'ShowsController@period_search')->name('shows.period_search');
     Route::get('period_stats', 'UsersController@period_stats')->name('users.period_stats');
+    Route::post('complete_1st', 'StageFormController@complete_1st')->name('complete_1st');
+    Route::post('complete_2nd', 'StageFormController@complete_2nd')->name('complete_2nd');
+    Route::post('complete_3rd', 'StageFormController@complete_3rd')->name('complete_3rd');
+    Route::post('complete_4th', 'StageFormController@complete_4th')->name('complete_4th');
+    Route::post('complete_5th', 'StageFormController@complete_5th')->name('complete_5th');
+    Route::post('complete_6th', 'StageFormController@complete_6th')->name('complete_6th');
+    Route::post('complete_7th', 'StageFormController@complete_7th')->name('complete_7th');
+
 });

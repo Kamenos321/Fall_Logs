@@ -32,7 +32,14 @@ class ShowsController extends Controller
         $show = new Show;
         
         return view('shows.create',[
-            'show' => $show
+            'show' => $show,
+            'stage1' => null, 
+            'stage2' => null,
+            'stage3' => null,
+            'stage4' => null,
+            'stage5' => null,
+            'stage6' => null,
+            'stage7' => null,
         ]);
     }
     
@@ -48,7 +55,7 @@ class ShowsController extends Controller
             'stage5' => 'max:20',
             'stage6' => 'max:20',
             'stage7' => 'max:20',
-            'result' => 'max:20',            
+            'result' => 'required|max:20',            
             ]);
             
         // 認証済みユーザ(閲覧者)の投稿として作成(リクエストされた値をもとに作成)
@@ -65,7 +72,7 @@ class ShowsController extends Controller
         ]);
         
         // 前のURLへリダイレクトさせる
-        return back();
+        return redirect('/shows/create');
     }
     
     public function edit($id)
