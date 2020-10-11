@@ -1,0 +1,1 @@
+{!! Form::submit($game_final,['class'=>'btn btn-block btn-warning mt-1 mx-auto']) !!}

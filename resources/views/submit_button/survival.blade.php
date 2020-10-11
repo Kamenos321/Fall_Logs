@@ -1,0 +1,1 @@
+{!! Form::submit($game_survival,['class'=>'btn btn-block btn-danger mt-1 mx-auto']) !!}

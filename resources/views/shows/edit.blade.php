@@ -2,8 +2,8 @@
 
 @section('content')
 
-    <div class="row">
-        <div class="col-10">
+<div class="container">
+    <div class='col-12 mt-4 mx-auto'>
             {!! Form::model($show, ['route' => ['shows.update', $show->id], 'method' => 'put']) !!}
                 <div class="form-group row">
                     {!! Form::label('date', 'date', ['class' => 'col-sm-2']) !!}
@@ -38,17 +38,17 @@
                     {!! Form::text('stage7', old('stage7'), ['class' => 'form-control col-sm-8']) !!}
                 </div>
                 <div class="form-group row">
-                    {!! Form::label('result', '結果', ['class' => 'col-sm-2']) !!}
+                    {!! Form::label('result', 'result', ['class' => 'col-sm-2']) !!}
                     {!! Form::select('result',['lose', 'win']) !!}
                 </div>
-                {!! Form::submit('更新', ['class' => 'btn btn-primary px-5']) !!}    
+                {!! Form::submit('更新', ['class' => 'btn btn-primary p-3 col-md-3 my-4']) !!}    
             {!! Form::close() !!}
             
             {!! Form::open(['route'=>['shows.destroy', $show->id],'method' => 'delete']) !!}
-                {!! Form::submit('削除',['class' => 'btn btn-danger mt-5 px-5 ']) !!}
+                {!! Form::submit('削除',['class' => 'btn btn-danger  mb-4 col-md-3 ']) !!}
             {!! Form::close() !!}
-        </div>
 
     </div>
+</div>
     
 @endsection

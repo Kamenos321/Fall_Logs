@@ -1,0 +1,1 @@
+{!! Form::submit($game_race,['class'=>'btn btn-block btn-primary mt-1 mx-auto']) !!}

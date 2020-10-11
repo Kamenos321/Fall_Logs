@@ -6,11 +6,9 @@
         {!! link_to_route('shows.index', 'Show一覧', [], ['class' => 'navbar-brand col-sm-2']) !!}
         {!! link_to_route('users.stats', 'スタッツ', [], ['class' => 'navbar-brand col-cm-2']) !!}
 
-
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#nav-bar">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="nav-bar">
             <ul class="navbar-nav mr-auto"></ul>
             <ul class="navbar-nav">
