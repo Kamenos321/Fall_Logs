@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<body style='background-image: url("/storage/background_edit.jpg");'>
+<body style='background-image: url("../../storage/background_edit.jpg");'>
 
 <div class="container">
     <div class='col-12 mt-4 mx-auto'>

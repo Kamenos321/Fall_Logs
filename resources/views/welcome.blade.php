@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<body style='background-image: url("storage/background_welcome.jpg");'>
+<body style='background-image: url("../storage/background_welcome.jpg");'>
 
 
     @if (Auth::check())

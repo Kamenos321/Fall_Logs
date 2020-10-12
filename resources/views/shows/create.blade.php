@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<body style='background-image: url("/storage/background_create.jpg");'>
+<body style='background-image: url("../../storage/background_create.jpg");'>
 
 @include('shows.stage_form')
 
