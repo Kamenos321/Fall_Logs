@@ -1,18 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
-<body style='background-image: url("storage/background_image.jpg");'>
-    
+<body style='background-image: url("storage/background_welcome.jpg");'>
+
+
     @if (Auth::check())
         <div class='container'>
-            <img src='{{ asset('storage/logo.jpg') }}' class='row col-sm-10 mx-auto'>
+            <img src='{{ asset('storage/logo.jpg') }}' class='row col-sm-10 mx-auto rounded-pill'>
             <div class='row col-12 mt-3 mx-auto'>
                 {{-- show作成ページへのリンク --}}
-                {!! link_to_route('shows.create', 'show作成', [], ['class' => 'main_button btn btn-primary row col-sm-4 mx-auto']) !!}
+                {!! link_to_route('shows.create', 'show作成', [], ['class' => 'main_button btn btn-primary rounded-pill row col-sm-4 mx-auto']) !!}
                 {{-- show一覧ページへのリンク --}}
-                {!! link_to_route('shows.index', 'show一覧', [], ['class' => 'main_button btn btn-success row col-sm-4 mx-auto']) !!}
+                {!! link_to_route('shows.index', 'show一覧', [], ['class' => 'main_button btn btn-success rounded-pill row col-sm-4 mx-auto']) !!}
                 {{-- statsページへのリンク --}}
-                {!! link_to_route('users.stats', 'スタッツ', [], ['class' => 'main_button btn btn-danger row col-sm-4 mx-auto']) !!}
+                {!! link_to_route('users.stats', 'スタッツ', [], ['class' => 'main_button btn btn-danger rounded-pill row col-sm-4 mx-auto']) !!}
             </div>
         </div>
     @else
@@ -26,5 +27,6 @@
             </div>
         </div>
     @endif
+
 </body>
 @endsection

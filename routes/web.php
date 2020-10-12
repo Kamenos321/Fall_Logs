@@ -27,6 +27,8 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 Route::group(['middleware' => ['auth']], function () {
     // 中略
     Route::resource('shows', 'ShowsController');
+    Route::resource('users', 'UsersController', ['only' => ['show','edit','update','destroy']]);
+    Route::get('destroy_confirm/{user}', 'UsersController@destroy_confirm')->name('users.destroy_confirm');
     Route::get('stats', 'UsersController@stats')->name('users.stats');
     Route::get('period_search', 'ShowsController@period_search')->name('shows.period_search');
     Route::get('period_stats', 'UsersController@period_stats')->name('users.period_stats');

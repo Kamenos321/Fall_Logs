@@ -9,7 +9,7 @@
         <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     </head>
 
-    <body>
+    <body style='background-image: url("../storage/background_index.jpg");'>
 
       {{-- ナビゲーションバー --}}
       @include('commons.navbar')
@@ -19,11 +19,12 @@
           @include('commons.error_messages')
 
         <div class='col-sm-11 mx-auto'>
+
           @include('shows.period')
-    
+
           <table class="index table text-center">
            
-              <tr>
+              <tr class='thead'>
                 <th scope="col"><i class="fas fa-crown"></i></th>
                 <th scope="col">date</th>
                 <th scope="col">1st</th>
@@ -33,6 +34,7 @@
                 <th scope="col">5th</th>
                 <th scope="col">6th</th>
                 <th scope="col">7th</th>
+                <th scope="col"><i class="fas fa-edit"></i></th>
               </tr>
           
             <tbody>
@@ -66,7 +68,8 @@
       
       @include('shows.cell_color')
 
+      {{-- ページネーションのリンク --}}
+      {{ $shows->links() }}
+
     </body>
 </html>
-
-  

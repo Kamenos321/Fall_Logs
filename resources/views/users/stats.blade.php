@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<body style='background-image: url("../storage/background_stats.jpg");'>
 
 <?php $games_race = array('ウォールガイズ','ぐるぐるファイト','ゲートクラッシュ','シーソーゲーム','スピンレース','スライム・クライム','ドアダッシュ','ナイトフィーバー','ヒットパレード','ヒヤヒヤロード','フルーツパニック'); ?>
 <?php $games_survival = array('しっぽオニ','ジャンプクラブ','パーフェクトマッチ','フープ・ループ・レジェンド','ブロックパーティー','ロールアウト'); ?>
@@ -172,5 +173,5 @@
 </div>
 
 @include('shows.cell_color')
-
+</body>
 @endsection

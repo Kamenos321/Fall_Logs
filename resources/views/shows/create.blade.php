@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<body style='background-image: url("/storage/background_create.jpg");'>
 
 @include('shows.stage_form')
 
@@ -47,5 +48,5 @@
         {!! Form::submit('作成', ['class' => 'col-sm-8 float-right btn btn-primary btn-block p-3 my-4']) !!}    
     {!! Form::close() !!}
 </div>
-
+</body>
 @endsection

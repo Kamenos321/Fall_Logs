@@ -5,9 +5,60 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Show;
+use App\User;
 
 class UsersController extends Controller
 {
+    public function show()
+    {
+        $user = \Auth::user();
+        return view('users.show', [
+            'user' => $user
+        ]);
+    }
+    
+    public function edit($id)
+    {
+        $user = \Auth::user();
+        return view('users.edit', [
+            'user' => $user
+        ]);
+        
+    }
+    
+    public function update(Request $request, $id)
+    {
+        // バリデーション
+        $request->validate([
+            'name' => 'required|max:20'
+        ]);
+        
+        $user = User::findOrFail($id);
+        
+        if(\Auth::id() === $user->id) {
+            $user->name = $request->name;
+            $user->save();
+        }
+        return redirect('/');
+    }
+    
+    public function destroy_confirm($id)
+    {
+        $user = User::findOrFail($id);
+        return view('users.destroy_confirm',[
+            'user' => $user
+        ]);
+    }
+    
+    public function destroy($id)
+    {
+        $user = User::findOrFail($id);
+        if(\Auth::id() === $user->id) {
+            $user->delete();
+        }
+        return redirect('/');
+    }
+    
     public function stats()
     {
         $data = [];
