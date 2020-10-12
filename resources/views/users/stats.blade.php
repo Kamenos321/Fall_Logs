@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<body style='background-image: url("storage/background_stats.jpg");'>
+<body style='background-image: url("https://50135521f3144bda9c8247e3307d9283.vfs.cloud9.ap-northeast-1.amazonaws.com/storage/background_stats.jpg");'>
 
 <?php $games_race = array('ウォールガイズ','ぐるぐるファイト','ゲートクラッシュ','シーソーゲーム','スピンレース','スライム・クライム','ドアダッシュ','ナイトフィーバー','ヒットパレード','ヒヤヒヤロード','フルーツパニック'); ?>
 <?php $games_survival = array('しっぽオニ','ジャンプクラブ','パーフェクトマッチ','フープ・ループ・レジェンド','ブロックパーティー','ロールアウト'); ?>
