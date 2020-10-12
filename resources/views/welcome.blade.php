@@ -6,7 +6,7 @@
 
     @if (Auth::check())
 
-        <img src='{{ asset('storage/logo.jpg') }}' class='row col-sm-12 mx-auto rounded-pill'>
+        <img src='https://50135521f3144bda9c8247e3307d9283.vfs.cloud9.ap-northeast-1.amazonaws.com/storage/logo.jpg' class='row col-sm-12 mx-auto rounded-pill'>
         <div class='row col-12 mt-3 mx-auto'>
             {{-- show作成ページへのリンク --}}
             {!! link_to_route('shows.create', 'show作成', [], ['class' => 'main_button btn btn-primary rounded-pill row col-sm-4 mx-auto']) !!}
