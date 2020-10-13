@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://50135521f3144bda9c8247e3307d9283.vfs.cloud9.ap-northeast-1.amazonaws.com/storage/style.css">
         <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        @include('layouts.style')
 
     </head>
 
